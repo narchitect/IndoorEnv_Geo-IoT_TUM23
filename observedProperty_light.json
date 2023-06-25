@@ -1,0 +1,5 @@
+{
+    "name": "Illuminance_lux",
+    "definition": "https://qudt.org/vocab/unit/LUX",
+    "description": "The measurement unit of light"
+}

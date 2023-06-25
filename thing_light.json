@@ -1,0 +1,23 @@
+{
+    "name": "Group6_LoRaWAn_WGPS",
+    "description": "The microcontroller of Group6",
+    "properties": {
+      "frequency": "30 s",
+      "groupNo": 6,
+      "DevEUI": "004F85D928E85BEC"
+    },
+    "Locations": [
+      {
+        "name": "TUM, Arcisstr. 21 - Testlocation",
+        "description": "Working_Room_North",
+        "encodingType": "application/vnd.geo+json",
+        "location": {
+          "type": "Point",
+          "coordinates": [
+            11.568975362823593,
+            48.150219707497165
+          ]
+        }
+      }
+    ]
+  }

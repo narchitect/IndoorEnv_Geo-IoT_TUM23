@@ -1,0 +1,19 @@
+{
+    "name": "Group6_Illuminance",
+    "description": "The illuminance inside the working room in the north building at TUM",
+    "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement",
+    "unitOfMeasurement": {
+      "name": "Lux",
+      "symbol": "lx",
+      "definition": "https://qudt.org/vocab/unit/LUX"
+    },
+    "Thing": {
+      "@iot.id": 253
+    },
+    "ObservedProperty": {
+      "@iot.id": 129
+    },
+    "Sensor": {
+      "@iot.id": 240
+    }
+}

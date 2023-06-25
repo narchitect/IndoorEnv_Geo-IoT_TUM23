@@ -1,0 +1,19 @@
+{
+  "name": "lecture_room_humidity",
+  "description": "The temperature inside lecture room.",
+  "observationType": "http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_Measurement",
+  "unitOfMeasurement": {
+    "name": "Centigrade",
+    "symbol": "C",
+    "definition": "http://www.qudt.org/qudt/owl/1.0.0/unit/Instances.html#DegreeCentigrade"
+  },
+  "Thing": {
+    "@iot.id": 196
+  },
+  "ObservedProperty": {
+    "@iot.id": 110
+  },
+  "Sensor": {
+    "@iot.id": 267
+  }
+}

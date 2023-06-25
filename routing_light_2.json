@@ -1,0 +1,62 @@
+{
+    _id: '70B3D57ED005DD2F_Group6',
+    name: 'Group6_Indoor_Environment_Project',
+    group_id: 6,
+    dev_eui: '70B3D57ED005DD2F',
+    datastreams: [
+        {
+            lpp_id: 1, //caynne channel number 
+            sta_servers: [
+                {
+                    sta_url: 'https://gi3.gis.lrg.tum.de/frost/v1.1',
+                    datastream_iot_id: 813 //light
+                }
+            ]
+        },
+        {
+            lpp_id: 2, //caynne channel number 
+            sta_servers: [
+                {
+                    sta_url: 'https://gi3.gis.lrg.tum.de/frost/v1.1',
+                    datastream_iot_id: 814 //dust
+                }
+            ]
+        },
+        {
+            lpp_id: 3, //caynne channel number 
+            sta_servers: [
+                {
+                    sta_url: 'https://gi3.gis.lrg.tum.de/frost/v1.1',
+                    datastream_iot_id: 823 //temperature
+                }
+            ]
+        },
+        {
+            lpp_id: 4, //caynne channel number 
+            sta_servers: [
+                {
+                    sta_url: 'https://gi3.gis.lrg.tum.de/frost/v1.1',
+                    datastream_iot_id: 824 //RelativeHumidity
+                }
+            ]
+        },
+        {
+            lpp_id: 5, //caynne channel number 
+            sta_servers: [
+                {
+                    sta_url: 'https://gi3.gis.lrg.tum.de/frost/v1.1',
+                    datastream_iot_id: 825 //Co2
+                }
+            ]
+        },
+        {
+            lpp_id: 6, //caynne channel number 
+            sta_servers: [
+                {
+                    sta_url: 'https://gi3.gis.lrg.tum.de/frost/v1.1',
+                    datastream_iot_id: 822 //VOC Gas
+                }
+            ]
+        } 
+    ]
+}

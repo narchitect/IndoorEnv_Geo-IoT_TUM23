@@ -1,0 +1,35 @@
+{
+    _id: '005D0958_TEST_DEVICE',
+    name: 'Group6_Routing',
+    group_id: 999,
+    dev_eui: 'TEST_DEVICE_005D0958',
+    datastreams: [
+        {
+            lpp_id: 1,
+            sta_servers: [
+                {
+                    sta_url: 'https://gi3.gis.lrg.tum.de/frost/v1.1',
+                    datastream_iot_id: 1
+                }
+            ]
+        },
+        {
+            lpp_id: 2,
+            sta_servers: [
+                {
+                    sta_url: 'https://gi3.gis.lrg.tum.de/frost/v1.1',
+                    datastream_iot_id: 24
+                }
+            ]
+        },
+        {
+            lpp_id: 5,
+            sta_servers: [
+                {
+                    sta_url: 'https://gi3.gis.lrg.tum.de/frost/v1.1',
+                    datastream_iot_id: 37
+                }
+            ]
+        }
+    ]
+}
