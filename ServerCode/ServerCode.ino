@@ -8,17 +8,16 @@
 //Ligth library -----------
 #include <Wire.h>
 #include <Digital_Light_TSL2561.h>
-
 //Dust Library ----------
 #include <Seeed_HM330X.h>
-
 //SCD30 Library ---------
 #include <SCD30.h>
-
 //BME680 Library ---------
 #include "seeed_bme680.h"
 #define IIC_ADDR  uint8_t(0x76)
 Seeed_BME680 bme680(IIC_ADDR);
+//LCD Library -------
+#include <rgb_lcd.h> 
 
 // Put your LoRa keys here
 #define DevEUI "004F85D928E85BEC"
@@ -34,17 +33,23 @@ CayenneLPP lpp(51);      // Define the buffer size: Keep as small as possible ->
 // SETUP -------------------------------------------------------------------------
 // vars
 char buffer[256];
-
 //dust
 HM330X sensor;
 uint8_t buf[30];
+//loudness
+int loudness;
+float db;
+// //lcd
+// rgb_lcd lcd;
+// // Status display counter
+// unsigned long lastDisplayUpdate = 0;
+// int displayStatusIndex = 0;
 
 void setup(void)
 {
   // Setup Serial connection
   delay(5000);
-  Serial.begin(115200);
- 
+  Serial.begin(115200); 
   // Powerup Seeeduino LoRaWAN Grove connectors
   pinMode(PIN_GROVE_POWER, OUTPUT);
   digitalWrite(PIN_GROVE_POWER, 1);
@@ -53,13 +58,14 @@ void setup(void)
   Wire.begin();
   Serial.begin(9600);
   TSL2561.init();
-
   // SCD30 sensor config
   Wire.begin();
     scd30.initialize();
-
   //bme680 sensor config
   bme680.init();
+  // //LCD config 
+  // lcd.begin(16, 2);
+  // lcd.setRGB(255, 255, 255);
 
   // Config LoRaWAN
   lora.init();
@@ -135,7 +141,12 @@ void loop(void) {
  
  /*--------- customized part ---------*/
   // Reset Cayenne buffer and add new data
-  lpp.reset();                             
+  lpp.reset(); 
+
+  //add loudness observations
+  loudness = analogRead(0);
+  db = 20*log10(loudness);
+  lpp.addAnalogInput(0, db);                          // loudness
   
   //add light observations
   lpp.addLuminosity(1, TSL2561.readVisibleLux());     // luminionity
@@ -154,6 +165,51 @@ void loop(void) {
   //add BME68 obeservation
   bme680.read_sensor_data();
   lpp.addAnalogOutput(6, (bme680.sensor_result_value.gas/1000.0)); // VOC gas
+  
+//   //LCD parts-------------------------------------------------
+//   // Read the sensor values
+//   float lux = TSL2561.readVisibleLux();
+//   float dust = buf[0];
+//   float temp = result_SCD30[1];
+//   float humidity = result_SCD30[2];
+//   float co2 = result_SCD30[0];
+//   float gas = (bme680.sensor_result_value.gas/1000.0);
+  
+//   // Update the LCD display every 5 seconds
+//   if (millis() - lastDisplayUpdate > 5000) {
+//     lastDisplayUpdate = millis();
+
+//     lcd.clear(); // Clear the LCD
+
+
+//   switch (displayStatusIndex) {
+//       case 0:
+//         lcd.print("Lux: ");
+//         lcd.print(lux);
+//         break;
+//       case 1:
+//         lcd.print("Dust: ");
+//         lcd.print(dust);
+//         break;
+//       case 2:
+//         lcd.print("Temp: ");
+//         lcd.print(temp);
+//         break;
+//       case 3:
+//         lcd.print("Humidity: ");
+//         lcd.print(humidity);
+//         break;
+//       case 4:
+//         lcd.print("CO2: ");
+//         lcd.print(co2);
+//         break;
+//       case 5:
+//         lcd.print("Gas: ");
+//         lcd.print(gas);
+//         break;
+//   }
+//    displayStatusIndex = (displayStatusIndex + 1) % 6;
+// }
   /*--------- customized part ---------*/
 
   // Transfer LoRa package

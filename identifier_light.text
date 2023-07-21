@@ -3,10 +3,10 @@ Things = 253
 ObeservedProperties = 129
 Light datastream = 813
 Dust Datastream = 814
-Temperature Datastream = 814
-Humidity Datastream = 814
-Co2 Datastream = 814
-VOCGas Datastream = 814
+Temperature Datastream = 823
+Humidity Datastream = 824
+Co2 Datastream = 825
+VOCGas Datastream = 822
 
 
 
